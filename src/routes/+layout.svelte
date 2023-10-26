@@ -1,5 +1,5 @@
 <script>
-  import Navbar from "$lib/Navbar.svelte";
+  import Navbar from "$lib/components/Navbar.svelte";
   import "../app.css";
 </script>
 
@@ -10,8 +10,10 @@
   /></svelte:head
 >
 
-<section class="app">
-  <div class="dark:bg-neutral-700 dark:text-white bg-neutral-200 text-black">
+<section class="app m-auto">
+  <div
+    class="py-5 rounded-t-xl dark:bg-neutral-700 dark:text-white bg-neutral-100 text-black"
+  >
     <slot />
   </div>
   <Navbar />

@@ -4,24 +4,33 @@
   let copyError = "";
 
   function copyToClipboard() {
-    if (textareaValue) {
-      navigator.clipboard
-        .writeText($textareaValue)
-        .then(() => {
-          copyDone = "Copied to Clipboard!";
-          copyError = "";
-          setTimeout(() => {
-            copyDone = "";
-          }, 3000)
-        })
-        .catch((error) => {
-          copyError = "Copy to Clipboard failed " + error;
-          copyDone = "";
-          setTimeout(() => {
-            copyError = ""
-          }, 3000)
-        });
+    const textToCopy = $textareaValue;
+
+    if (textToCopy.trim().length === 0) {
+      copyError = "No Content to Copy";
+      copyDone = "";
+      setTimeout(() => {
+        copyError = "";
+      }, 3000);
+      return;
     }
+
+    navigator.clipboard
+      .writeText($textareaValue)
+      .then(() => {
+        copyDone = "Copied to Clipboard!";
+        copyError = "";
+        setTimeout(() => {
+          copyDone = "";
+        }, 3000);
+      })
+      .catch((error) => {
+        copyError = "Copy to Clipboard failed " + error;
+        copyDone = "";
+        setTimeout(() => {
+          copyError = "";
+        }, 3000);
+      });
   }
 </script>
 
